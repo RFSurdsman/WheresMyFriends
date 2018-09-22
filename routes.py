@@ -3,8 +3,6 @@ from flask_login import logout_user, current_user, login_required, login_user
 from user import *
 from server import app, login, users
 
-
-
 def validate_login(username, password):
 	for u in users:
 		if username == u.username and password == u.password:
@@ -30,7 +28,7 @@ def index():
 	return render_template("index.html")
 
 @app.route('/map')
-#@login_required
+@login_required
 def map():
     return render_template("map.html")
 
