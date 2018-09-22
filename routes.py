@@ -2,7 +2,6 @@ from flask import render_template, request, url_for, redirect, jsonify
 from flask_login import logout_user, current_user, login_required, login_user
 from user import *
 from server import app, login, users
-import geocoder
 
 user = None
 
