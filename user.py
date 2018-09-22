@@ -1,4 +1,6 @@
-class User():
+from flask_login import UserMixin
+
+class User(UserMixin):
     def __init__(self, username, password):
         self.id = id()
         self.username = username
@@ -17,3 +19,4 @@ class User():
 
     def get_friends(self, user):
         return self.friends
+
