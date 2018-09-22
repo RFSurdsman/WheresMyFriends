@@ -26,5 +26,10 @@ def new_todo():
                     "returnx" : "added from the web server using ajax!!",
                     "id": id})
 
+@app.route('/richard', methods = ['POST', 'GET'])
+def richard():
+    return render_template('richardmaps.html')
+
+
 if __name__ == '__main__':
-    app.run()
+    app.run(debug = "true")
