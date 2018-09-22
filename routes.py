@@ -33,7 +33,8 @@ def index():
 @app.route('/map')
 def map():
 	global user
-	return render_template("map.html", user = user)
+	global users
+	return render_template("map.html", user = user, users = users)
 
 @login_required
 @app.route('/logout')

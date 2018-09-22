@@ -28,19 +28,21 @@
 
 <body class="text-center" style="background-image: linear-gradient(0.35turn, #448cff, #9b44ff);">
   <form class="form-signin">
-    <img class="mb-4" src="{{ url_for('static', filename='logo.png') }}" alt="" width="72" height="72">
-    <h1 style="font-family: 'Raleway', sans-serif; font-size: 40px" , size="72" , class="h3 mb-3 font-weight-normal">Where's
+    <img class="mb-4" src="{{ url_for('static', filename='logo.png') }}" alt="" width="72" height="72" style="display: inline-block">
+    <h1 style="font-family: 'Raleway', sans-serif; font-size: 40px; display: inline-block" size="72" class="h3 mb-3 font-weight-normal">Where's
       My Friends</h1>
     <!-- Image and text -->
     <div class="container">
             <img src="{{ url_for('static', filename='map.png') }}" style="width: 100%">
+            {% for p in users %}
             <div style="
             position: absolute;
-            top: 500px;
-            left: 200px;
+            top: {{ p.get_map_pixels()[0] }}px;
+            left: {{ p.get_map_pixels()[1] }}px;
             transform: translate(-50%, -50%);
             ">
-            <img class="mb-4" src="{{ url_for('static', filename=user.imagelocation) }}" alt="" width="72" height="72"></div>
+            <img class="mb-4" src="{{ url_for('static', filename=p.imagelocation) }}" alt="" width="72" height="72"></div>
+            {% endfor %}
     </div>
 
   </form>

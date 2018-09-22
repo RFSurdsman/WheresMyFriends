@@ -6,7 +6,7 @@ class User(UserMixin):
         self.username = username
         self.password = password
         self.friends = []
-        self.position = (0, 0)
+        self.position = position
         self.imagelocation = filename + '.png'
 
     def update_position(self, longitude, latitude):
@@ -28,7 +28,7 @@ class User(UserMixin):
         xDiff = self.position[0] - 33.918216
         yDiff = self.position[1] - 151.231402
 
-        return (xDiff * 250,000, yDiff * 4000)
+        return (650 + xDiff * 250000, 300 + yDiff * 4000)
 
     def get_pic(self):
         return self.imagelocation
