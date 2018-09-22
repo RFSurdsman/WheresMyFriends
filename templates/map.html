@@ -30,7 +30,14 @@
     <p>Click the button to get your coordinates.</p>
 
 
-    <button onclick="getLocation()">Try It</button>
+   
+  <div class="form-signin">
+    <img class="mb-4" src="{{ url_for('static', filename='logo.png') }}" alt="" width="60" height="60" style="display: inline-block;">
+    <h1 style="font-family: 'Raleway', sans-serif; font-size: 30px; display: inline-block;" size="72" class="h3 mb-3 font-weight-normal">Where's
+      My Friends</h1><br>
+    <!-- Image and text -->
+    <button onclick="getLocation()">Update Location</button>
+    <button onclick="location.reload()">Refresh</button>
 
     <p id="demo"></p>
     
@@ -43,7 +50,6 @@
         } else { 
             x.innerHTML = "Geolocation is not supported by this browser.";
         }
-        location.reload();
     }
     
     function showPosition(position) {
@@ -62,11 +68,6 @@
     src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
-  <form class="form-signin">
-    <img class="mb-4" src="{{ url_for('static', filename='logo.png') }}" alt="" width="60" height="60" style="display: inline-block;">
-    <h1 style="font-family: 'Raleway', sans-serif; font-size: 30px; display: inline-block;" size="72" class="h3 mb-3 font-weight-normal">Where's
-      My Friends</h1>
-    <!-- Image and text -->
     <div class="container">
       <img src="static/map.png" alt="hello" style="width:100%;height:100%">
       {% for p in users %}
