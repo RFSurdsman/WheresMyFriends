@@ -55,4 +55,3 @@ def logout():
 	else:
 		return render_template()	
 
-
