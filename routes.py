@@ -27,13 +27,13 @@ def index():
 
 	return render_template("index.html")
 
-@app.route('/map')
 @login_required
+@app.route('/map')
 def map():
     return render_template("map.html")
 
-@app.route('/logout')
 @login_required
+@app.route('/logout')
 def logout():
 	logout_user()
 	return redirect(url_for('index'))
