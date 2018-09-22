@@ -1,4 +1,4 @@
-from flask import render_template, request, url_for, redirect
+from flask import render_template, request, url_for, redirect, jsonify
 from flask_login import logout_user, current_user, login_required, login_user
 from user import *
 from server import app, login, users
@@ -67,4 +67,8 @@ def geolocator():
 def poslistener():
 	longitude = request.json['longitude']
 	latitude = request.json['latitude']
-	
+	print(str(user.position))
+	user.position = (abs(latitude), longitude)
+	print(str(user.position))
+	return jsonify({"longitude": request.json['longitude'], 
+		"latitude": request.json['latitude']})
