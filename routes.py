@@ -31,12 +31,10 @@ def loginPage():
 			login_user(user)
 			return redirect(url_for('map'))
 
-@app.route('/map')
+@app.route('/map', methods = ['POST', 'GET'])
 #@login_required
 def map():
     return render_template("map.html")
-
-
 
 @app.route('/logout')
 @login_required
