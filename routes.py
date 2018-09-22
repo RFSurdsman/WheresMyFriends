@@ -34,10 +34,6 @@ def index():
 def map():
     return render_template("map.html")
 
-@app.route('/richard', methods = ['POST', 'GET'])
-def richard():
-    return render_template('richardmaps.html')
-
 @app.route('/logout')
 @login_required
 def logout():
