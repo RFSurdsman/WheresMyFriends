@@ -1,13 +1,10 @@
-from flask import Flask, render_template, request, jsonify, _app_ctx_stack
+from flask import Flask
+from routes import app
 
-app = Flask(__name__)
-app.config.from_object(__name__)
-tasks = [
-        {"title": "Name", "description": "Description"},
-        {"title": "Another puck", "description": "asd;kdlkads"},
-        {"title": "tony is trash", "description": "lelelelelelle"}
-    ]   
+if __name__ == "__main__":
+    app.run(debug = True)
 
+<<<<<<< HEAD
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -33,3 +30,4 @@ def richard():
 
 if __name__ == '__main__':
     app.run(debug = "true")
+
