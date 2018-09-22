@@ -3,7 +3,7 @@ from flask_login import logout_user, current_user, login_required, login_user
 from user import *
 from server import *
 
-users = []
+users = [User("natalie", "a", "a")]
 
 def validate_login(username, password):
 	for u in users:
@@ -11,25 +11,23 @@ def validate_login(username, password):
 		    return u
 	return None	
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-	return render_template("index.html")
-
-
-@app.route('/login', methods=['GET', 'POST'])
-def loginPage():
 	if request.method == 'POST':
-		username = request.form['Username']
-		password = request.form['Password']
+		print(request.form)
+		username = request.form['username']
+		password = request.form['password']
 
 		user = validate_login(username, password)
 
 		if user is None:
-			return
+			print("puck")
 		else:
 			login_user(user)
-			
+			print("wowowowojfijpaojsad!")
 			return redirect(url_for('map'))
+
+	return render_template("index.html")
 
 @app.route('/map')
 #@login_required
