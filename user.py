@@ -1,13 +1,14 @@
 from flask_login import UserMixin
 
 class User(UserMixin):
-    def __init__(self, username, password, filename, position):
+    def __init__(self, username, password, filename, position, location):
         self.id = id(self)
         self.username = username
         self.password = password
         self.friends = []
         self.position = position
         self.imagelocation = filename + '.png'
+        self.location = location
 
     def update_position(self, longitude, latitude):
         self.position = (longitude, latitude)
