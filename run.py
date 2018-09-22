@@ -1,12 +1,14 @@
 from flask import Flask, render_template, request, jsonify, _app_ctx_stack
 
+
+
 app = Flask(__name__)
 app.config.from_object(__name__)
 tasks = [
         {"title": "Name", "description": "Description"},
         {"title": "Another puck", "description": "asd;kdlkads"},
         {"title": "tony is trash", "description": "lelelelelelle"}
-    ]   
+    ] 
 
 @app.route('/')
 def index():
@@ -28,3 +30,8 @@ def new_todo():
 
 if __name__ == '__main__':
     app.run()
+
+
+
+
+
