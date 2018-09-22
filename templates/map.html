@@ -27,17 +27,13 @@
 </head>
 
 <body class="text-center" style="background-image: linear-gradient(0.35turn, #448cff, #9b44ff);">
-    <p>Click the button to get your coordinates.</p>
 
-
-   
   <div class="form-signin">
     <img class="mb-4" src="{{ url_for('static', filename='logo.png') }}" alt="" width="60" height="60" style="display: inline-block;">
     <h1 style="font-family: 'Raleway', sans-serif; font-size: 30px; display: inline-block;" size="72" class="h3 mb-3 font-weight-normal">Where's
-      My Friends</h1><br>
+      My Friends?</h1><br>
     <!-- Image and text -->
-    <button onclick="getLocation()">Update Location</button>
-    <button onclick="location.reload()">Refresh</button>
+   
 
     <p id="demo"></p>
     
@@ -186,6 +182,9 @@
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMoE9vCcLmQZn9Td1KDYUzpEKE1u_zYAg&callback=myMap"></script>
 
-
+<div style ="text-align:center;">
+  <button class="btn btn-sm btn-block" style="background-color: #79F2C0; width: 50%;" onclick="getLocation()">Update Location</button>
+  <button class="btn btn-sm btn-block" style="background-color: #79F2C0; width: 50%;" onclick="location.reload()">Refresh</button>
+</div>
 
 </html>
