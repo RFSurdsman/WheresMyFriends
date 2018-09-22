@@ -22,13 +22,13 @@ def loginPage():
 		username = request.form['Username']
 		password = request.form['Password']
 
-
 		user = validate_login(username, password)
 
 		if user is None:
 			return
 		else:
 			login_user(user)
+			
 			return redirect(url_for('map'))
 
 @app.route('/map', methods = ['POST', 'GET'])
@@ -44,12 +44,14 @@ def logout():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+	global users
 	if request.method == 'POST':
 		username = request.form['Username']
 		password = request.form['Password']
 
-		user = User(username, password)
-		users.add(user)
+		path = './static/' + current_user.username + '.jpg'
+		user = User(username, password, path)
+		users.append(user)
 
 		return render_template()
 	else:
