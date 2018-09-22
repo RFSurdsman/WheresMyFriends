@@ -2,6 +2,7 @@ from flask import render_template, request, url_for, redirect
 from flask_login import logout_user, current_user, login_required, login_user
 from user import *
 from server import app, login, users
+import geocoder
 
 
 
@@ -55,3 +56,13 @@ def register():
 	else:
 		return render_template()	
 
+@app.route('/geolocator', methods = ['POST', 'GET'])
+def geolocator():
+	return render_template('geolocator.html')
+
+
+@app.route('/poslistener', methods = ['POST', 'GET'])
+def poslistener():
+	longitude = request.json['longitude']
+	latitude = request.json['latitude']
+	

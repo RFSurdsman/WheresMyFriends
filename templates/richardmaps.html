@@ -15,7 +15,15 @@ var mapProp= {
     rotateControl:true,
     mapTypeId: 'roadmap',
     disableDefaultUI: true,
+    draggable: false,
     styles: [
+              {
+              featureType: "all",
+              elementType: "labels",
+              stylers: [
+                { visibility: "off" }
+              ]
+            },
             {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
             {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
             {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
@@ -97,6 +105,9 @@ var mapProp= {
           ]
 };
 var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+var myPos = new google.maps.LatLng(-33.9173,151.2313)
+var marker=new google.maps.marker({position:myPos, title:"My Position"});
+marker.setMap(map);
 }
 </script>
 
