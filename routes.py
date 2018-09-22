@@ -3,7 +3,6 @@ from flask_login import logout_user, current_user, login_required, login_user
 from user import *
 from server import *
 
-
 users = []
 
 def validate_login(username, password):
@@ -37,7 +36,9 @@ def loginPage():
 def map():
     return render_template("map.html")
 
-
+@app.route('/richard', methods = ['POST', 'GET'])
+def richard():
+    return render_template('richardmaps.html')
 
 @app.route('/logout')
 @login_required
@@ -47,13 +48,14 @@ def logout():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+	global users
 	if request.method == 'POST':
 		username = request.form['Username']
 		password = request.form['Password']
 
 		path = './static/' + current_user.username + '.jpg'
 		user = User(username, password, path)
-		users.add(user)
+		users.append(user)
 
 		return render_template()
 	else:
