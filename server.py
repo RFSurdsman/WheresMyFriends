@@ -12,7 +12,7 @@ login.login_view = 'login'
 def load_user(user_id):
 	return get_user(user_id)
 
-users = [User("natalie", "a", "a")]
+users = [User("kirsten", "k", "kirsten", (33.918216, 151.231402))]
 
 def get_user(user_id):
 	for u in users:
