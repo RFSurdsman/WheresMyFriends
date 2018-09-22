@@ -3,6 +3,7 @@ from flask_login import logout_user, current_user, login_required, login_user
 from user import *
 from server import *
 
+
 users = []
 
 def validate_login(username, password):
@@ -22,19 +23,19 @@ def loginPage():
 		username = request.form['Username']
 		password = request.form['Password']
 
-
 		user = validate_login(username, password)
 
 		if user is None:
 			return
 		else:
 			login_user(user)
+			
 			return redirect(url_for('map'))
 
 @app.route('/map')
 @login_required
 def map():
-    pass
+    return render_template("map.html")
 
 
 
@@ -50,7 +51,8 @@ def register():
 		username = request.form['Username']
 		password = request.form['Password']
 
-		user = User(username, password)
+		path = './static/' + current_user.username + '.jpg'
+		user = User(username, password, path)
 		users.add(user)
 
 		return render_template()
