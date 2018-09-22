@@ -1,9 +1,9 @@
 from flask import render_template, request, url_for, redirect
 from flask_login import logout_user, current_user, login_required, login_user
 from user import *
-from server import *
+from server import app, login, users
 
-users = [User("natalie", "a", "a")]
+user = None
 
 def validate_login(username, password):
 	for u in users:
@@ -13,6 +13,7 @@ def validate_login(username, password):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+	global user
 	if request.method == 'POST':
 		print(request.form)
 		username = request.form['username']
@@ -21,21 +22,21 @@ def index():
 		user = validate_login(username, password)
 
 		if user is None:
-			print("puck")
+			print('puck')
 		else:
 			login_user(user)
-			print("wowowowojfijpaojsad!")
 			return redirect(url_for('map'))
 
 	return render_template("index.html")
 
-@app.route('/map')
-#@login_required
-def map():
-    return render_template("map.html")
-
-@app.route('/logout')
 @login_required
+@app.route('/map')
+def map():
+	global user
+	return render_template("map.html", user = user)
+
+@login_required
+@app.route('/logout')
 def logout():
 	logout_user()
 	return redirect(url_for('index'))
@@ -47,7 +48,7 @@ def register():
 		username = request.form['Username']
 		password = request.form['Password']
 
-		path = './static/' + current_user.username + '.jpg'
+		path = current_user.username + '.jpg'
 		user = User(username, password, path)
 		users.append(user)
 
