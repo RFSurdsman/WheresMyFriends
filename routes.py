@@ -33,7 +33,7 @@ def loginPage():
 			return redirect(url_for('map'))
 
 @app.route('/map')
-@login_required
+#@login_required
 def map():
     return render_template("map.html")
 
