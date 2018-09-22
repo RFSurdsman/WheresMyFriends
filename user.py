@@ -7,6 +7,7 @@ class User(UserMixin):
         self.password = password
         self.friends = []
         self.position = (0, 0)
+        self.imagelocation = "{{ url_for('static', filename='{self.username}.jpg') }}"
 
     def update_position(self, longitude, latitude):
         self.position = (longitude, latitude)
