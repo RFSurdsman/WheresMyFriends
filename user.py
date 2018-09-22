@@ -21,4 +21,6 @@ class User(UserMixin):
     def get_friends(self, user):
         return self.friends
 
+    def get_ID(self):
+        return self.id
 
